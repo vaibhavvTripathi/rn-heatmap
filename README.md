@@ -29,7 +29,7 @@ npm install react-native-svg
 ```tsx
 import React from 'react';
 import { View } from 'react-native';
-import Heatmap from 'react-native-heatmap';
+import {Heatmap} from 'rn-heatmap';
 
 const LightModeHeatmap = () => {
   return (
@@ -84,18 +84,18 @@ const LightModeHeatmap = () => {
 
 export default LightModeHeatmap;
 ```
-```
+---
 
 ![Alt text](./assets/light.png)
 
-```
+---
 
 ### Dark Mode Component
 
 ```tsx
 import React from 'react';
 import { View } from 'react-native';
-import Heatmap from 'react-native-heatmap';
+import {Heatmap} from 'rn-heatmap';
 
 const DarkModeHeatmap = () => {
   return (
@@ -150,11 +150,11 @@ const DarkModeHeatmap = () => {
 
 export default DarkModeHeatmap;
 ```
-```
+---
 
 ![Alt text](./assets/dark.png)
 
-```
+---
 
 ## API Reference
 

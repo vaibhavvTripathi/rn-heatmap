@@ -1,7 +1,7 @@
 {
   "name": "rn-heatmap",
   "description": "The react-native-heatmap package provides a customizable activity heatmap similar to GitHub's contribution graph, built with react-native-svg.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": false,
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -13,13 +13,10 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "build":"bob build"
+    "build": "bob build"
   },
   "dependencies": {
-    "react": "19.0.0",
-    "react-native": "0.78.0",
-    "react-native-builder-bob": "^0.37.0",
-    "react-native-svg": "^15.11.2"
+    "react-native-builder-bob": "^0.37.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -40,6 +37,11 @@
     "prettier": "2.8.8",
     "react-test-renderer": "19.0.0",
     "typescript": "5.0.4"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "react-native-svg": "*"
   },
   "react-native-builder-bob": {
     "source": "src",

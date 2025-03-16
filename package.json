@@ -1,17 +1,25 @@
 {
-  "name": "rnheatmap",
-  "version": "0.0.1",
-  "private": true,
+  "name": "rn-heatmap",
+  "description": "The react-native-heatmap package provides a customizable activity heatmap similar to GitHub's contribution graph, built with react-native-svg.",
+  "version": "0.0.2",
+  "private": false,
+  "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
+  "react-native": "lib/commonjs/index.js",
+  "types": "lib/typescript/src/index.d.ts",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "build":"bob build"
   },
   "dependencies": {
     "react": "19.0.0",
-    "react-native": "0.78.0"
+    "react-native": "0.78.0",
+    "react-native-builder-bob": "^0.37.0",
+    "react-native-svg": "^15.11.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -32,6 +40,24 @@
     "prettier": "2.8.8",
     "react-test-renderer": "19.0.0",
     "typescript": "5.0.4"
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module",
+      [
+        "typescript",
+        {
+          "project": "tsconfig.json"
+        }
+      ]
+    ],
+    "files": [
+      "lib/",
+      "src/"
+    ]
   },
   "engines": {
     "node": ">=18"

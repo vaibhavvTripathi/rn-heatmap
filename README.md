@@ -1,97 +1,205 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Heatmap Component - NPM Package
 
-# Getting Started
+## Overview
+The `rn-heatmap` package provides a customizable activity heatmap similar to GitHub's contribution graph, built with `react-native-svg`.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
-
-## Step 1: Start Metro
-
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
-
-To start the Metro dev server, run the following command from the root of your React Native project:
+## Installation
 
 ```sh
-# Using npm
-npm start
-
-# OR using Yarn
-yarn start
+npm install rn-heatmap
 ```
 
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
+or with Yarn:
 
 ```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+yarn add rn-heatmap
 ```
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+### Peer Dependencies
+Ensure you have `react-native-svg` installed:
 
 ```sh
-bundle install
+npm install react-native-svg
 ```
 
-Then, and every time you update your native dependencies, run:
+## Usage
 
-```sh
-bundle exec pod install
+### Light Mode Component
+
+```tsx
+import React from 'react';
+import { View } from 'react-native';
+import Heatmap from 'react-native-heatmap';
+
+const LightModeHeatmap = () => {
+  return (
+    <View>
+      <Heatmap
+        year={2024}
+        activeDays={[
+          {monthIndex: 0, dayIndex: 5, level: 2},
+          {monthIndex: 2, dayIndex: 10, level: 3},
+          {monthIndex: 5, dayIndex: 20, level: 1},
+        ]}
+        defaultCellColor="#808080"
+        colorMap={{
+          1: '#a3d9a5',
+          2: '#57c84d',
+          3: '#228b22',
+        }}
+        cellSize={12}
+        dayGap={6}
+        monthlyGap={30}
+        textPadding={10}
+        fontWeight="bold"
+        getMonthAnnotation={monthIndex =>
+          [
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec',
+          ][monthIndex]
+        }
+        showMonthAnnotation={true}
+        monthlyAnnotationFontSize={12}
+        monthlyAnnotationColor="black"
+        cellBorderRadius={4}
+        paddingHorizontal={15}
+        paddingVertical={5}
+        bottomPadding={15}
+        showCurrentFullYear={true}
+        showScrollBar={true}
+      />
+    </View>
+  );
+};
+
+export default LightModeHeatmap;
+```
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+![Alt text](./assets/light.png)
 
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+### Dark Mode Component
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+```tsx
+import React from 'react';
+import { View } from 'react-native';
+import Heatmap from 'react-native-heatmap';
 
-## Step 3: Modify your app
+const DarkModeHeatmap = () => {
+  return (
+    <View>
+      <Heatmap
+        year={2024}
+        activeDays={[
+          {monthIndex: 0, dayIndex: 5, level: 2},
+          {monthIndex: 2, dayIndex: 10, level: 3},
+          {monthIndex: 5, dayIndex: 20, level: 1},
+        ]}
+        defaultCellColor="#161b22"
+        colorMap={{
+          1: '#0e4429',
+          2: '#006d32',
+          3: '#26a641',
+        }}
+        cellSize={14}
+        dayGap={8}
+        monthlyGap={35}
+        textPadding={12}
+        fontWeight="bold"
+        getMonthAnnotation={monthIndex =>
+          [
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec',
+          ][monthIndex]
+        }
+        showMonthAnnotation={true}
+        monthlyAnnotationFontSize={12}
+        monthlyAnnotationColor="white"
+        cellBorderRadius={4}
+        paddingHorizontal={15}
+        paddingVertical={5}
+        bottomPadding={15}
+        showCurrentFullYear={true}
+        showScrollBar={true}
+      />
+    </View>
+  );
+};
 
-Now that you have successfully run the app, let's make changes!
+export default DarkModeHeatmap;
+```
+```
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+![Alt text](./assets/dark.png)
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+```
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+## API Reference
 
-## Congratulations! :tada:
+### Props
 
-You've successfully run and modified your React Native App. :partying_face:
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `year` | `number` | **Required** | The year for which the heatmap is generated. |
+| `activeDays` | `Array<Activity>` | `[]` | List of active days with their month, day index, and activity level. |
+| `defaultCellColor` | `string` | `#161b22` | The default background color for inactive days. |
+| `colorMap` | `{[key: number]: string}` | `{1: '#0e4429', 2: '#006d32', 3: '#26a641'}` | Color mapping for different activity levels. |
+| `cellSize` | `number` | `12` | The size of each cell representing a day. |
+| `dayGap` | `number` | `6` | The gap between each day's cell. |
+| `monthlyGap` | `number` | `30` | The gap between months. |
+| `textPadding` | `number` | `10` | Padding for month annotations. |
+| `fontWeight` | `FontWeight` | `'normal'` | Font weight for month labels. |
+| `getMonthAnnotation` | `(monthIndex: number) => string` | `getMonthFromMonthIndex` | Function to get month labels. |
+| `showMonthAnnotation` | `boolean` | `true` | Whether to display month labels. |
+| `monthlyAnnotationFontSize` | `number` | `10` | Font size for month labels. |
+| `monthlyAnnotationColor` | `string` | `'white'` | Color of month labels. |
+| `cellBorderRadius` | `number` | `2` | Border radius for day cells. |
+| `paddingHorizontal` | `number` | `10` | Horizontal padding for the component. |
+| `paddingVertical` | `number` | `0` | Vertical padding for the component. |
+| `bottomPadding` | `number` | `10` | Bottom padding for the heatmap. |
+| `showCurrentFullYear` | `boolean` | `false` | Whether to show the entire current year or only past days. |
+| `showScrollBar` | `boolean` | `false` | Whether to show the horizontal scrollbar. |
 
-### Now what?
+## Activity Object Structure
+Each `Activity` object in `activeDays` should have the following structure:
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+```ts
+interface Activity {
+  monthIndex: number; // 0-based index (0 = January, 11 = December)
+  dayIndex: number;   // 0-based index (0 = first day of the month)
+  level: 1 | 2 | 3;   // Activity level, corresponding to `colorMap`
+}
+```
 
-# Troubleshooting
+## Contributing
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+1. Fork the repository.
+2. Clone the repo: `git clone https://github.com/yourusername/rn-heatmap.git`
+3. Install dependencies: `npm install`
+4. Make your changes.
+5. Submit a pull request.
 
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+## License
+MIT License

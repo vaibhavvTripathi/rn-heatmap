@@ -86,7 +86,7 @@ export default LightModeHeatmap;
 ```
 ---
 
-![Alt text](./assets/light.png)
+![Alt text](https://raw.githubusercontent.com/vaibhavvTripathi/rn-heatmap/main/assets/light.png)
 
 ---
 
@@ -152,7 +152,7 @@ export default DarkModeHeatmap;
 ```
 ---
 
-![Alt text](./assets/dark.png)
+![Alt text](https://raw.githubusercontent.com/vaibhavvTripathi/rn-heatmap/main/assets/dark.png)
 
 ---
 

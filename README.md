@@ -198,8 +198,9 @@ interface Activity {
 1. Fork the repository.
 2. Clone the repo: `git clone https://github.com/yourusername/rn-heatmap.git`
 3. Install dependencies: `npm install`
-4. Make your changes.
-5. Submit a pull request.
+4. Run project by : `npm run android or npm run ios etc`
+5. Make your changes.
+6. Submit a pull request.
 
 ## License
 MIT License

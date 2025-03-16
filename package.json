@@ -1,12 +1,15 @@
 {
   "name": "rn-heatmap",
   "description": "The react-native-heatmap package provides a customizable activity heatmap similar to GitHub's contribution graph, built with react-native-svg.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": false,
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
   "react-native": "lib/commonjs/index.js",
   "types": "lib/typescript/src/index.d.ts",
+  "repository": {
+    "url": "https://github.com/vaibhavvTripathi/rn-heatmap"
+  },
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -64,5 +67,10 @@
   "engines": {
     "node": ">=18"
   },
+  "categories": [
+    "Visualization",
+    "react",
+    "react-native"
+  ],
   "license": "MIT"
 }
